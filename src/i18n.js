@@ -1,17 +1,25 @@
+/**
+ * @fileoverview Internationalization (i18n) setup using i18next for React.
+ */
+
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-http-backend";
 
+/**
+ * Initialize i18next with backend, language detection, and React integration.
+ * @module i18n
+ */
 i18n
-  .use(Backend) // Load translations using http backend
-  .use(LanguageDetector) // Optional: auto-detect the user's language
-  .use(initReactI18next) // Connect with React
+  .use(Backend)
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
     fallbackLng: "en",
     debug: true,
     interpolation: {
-      escapeValue: false, // React already escapes by default
+      escapeValue: false,
     },
     backend: {
       loadPath: "/locales/{{lng}}/translation.json",
